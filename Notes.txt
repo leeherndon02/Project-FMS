@@ -1,0 +1,86 @@
+Good Methods to Use for Project FMS
+
+Events:
+    Acceleration
+        deviceOrientation
+
+    Keyboard
+        keyIsPressed
+
+        key
+
+        keyPressed 
+
+        keyReleased
+
+        keyTyped 
+
+    Mouse
+        mouseIsPressed
+
+        mouseMoved()
+
+        mouseDragged()
+
+        mousePressed()
+
+        mouseClicked()
+
+    Touch
+        touches
+
+        touchStarted()
+
+        touchMoved()
+
+        touchEnded()
+
+Environment
+
+    frameCount
+
+    frameRate()
+
+    windowResized()
+
+    fullscreen()
+
+Color
+    Creating & Reading
+        color()
+    
+    Setting
+        background()
+
+        fill()
+
+        stroke()
+
+Shape
+    2D Primitives
+        circle()
+
+        line()
+
+Constants
+    DEGREES
+
+Structure
+    draw()
+
+    remove()
+
+    noLoop()
+
+    loop()
+
+    isLooping()
+
+    
+
+
+
+
+
+
+
