@@ -1,5 +1,5 @@
 var mode; //determines if game has started
-var game1 = 'Penny Pinching';
+var game1 = 'HELP';
 //var game2 = 'Tracing Letters';
 //var game3 = 'Typing';
 
@@ -8,9 +8,10 @@ var winW = 1536/2;
 
 function setup() {
     createCanvas(windowWidth, windowHeight); //height 731, width 1536
-    background(500, 200, 300);
+    background(500, 200, 100);
     mode = 0; //initially, game not started
     textSize(20);
+    
 
   }
   
@@ -18,7 +19,11 @@ function setup() {
     //clear();
     
     if (mode == 0){
-      text(game1, winW, winH);
+      text(game1, winW, winH, 20, 20);
+
+      noFill();
+      rect(winW, winH, 60, 20);
+      
     }
 
     if (mode == 1){
