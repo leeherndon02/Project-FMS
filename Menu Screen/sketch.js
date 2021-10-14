@@ -7,16 +7,16 @@ var winH = 731/2;
 var winW = 1536/2;
 
 function setup() {
-    createCanvas(1536,731); //height 731, width 1536
-    background(200);
+    createCanvas(windowWidth, windowHeight); //height 731, width 1536
+    background(500, 200, 300);
     mode = 0; //initially, game not started
     textSize(20);
 
   }
   
   function draw() {
-    clear();
-
+    //clear();
+    
     if (mode == 0){
       text(game1, winW, winH);
     }
