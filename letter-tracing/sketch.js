@@ -1,7 +1,7 @@
 function setup() 
   {
     createCanvas(1366, 768);
-    //Hello ffj
+    ///fuck me
   }
   
   function draw() 
