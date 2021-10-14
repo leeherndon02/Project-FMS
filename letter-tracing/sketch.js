@@ -1,7 +1,7 @@
 function setup() 
   {
     createCanvas(1366, 768);
-    //Hello ff
+    //Hello ffj
   }
   
   function draw() 
