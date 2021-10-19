@@ -18,7 +18,9 @@ function setup()
     
     strokeWeight(2);
     text('Penny Pinching!', 10, 50);
-    
+    textAlign(CENTER);
+    text('Points:', 1200, 520);
+    text('500', 1200, 600);
     
 
     fill('brown');
