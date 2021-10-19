@@ -1,16 +1,17 @@
 function setup() 
   {
     createCanvas(windowWidth, windowHeight);
-    frameRate(10);
+    button = createButton('MENU');
+    //frameRate(10);
     
   }
   
   function draw() 
   {
+  
     background(160, 160, 160);
 
-    button = createButton('MENU');
-    button.position(60, 550);
+    button.position(windowWidth*.05, windowHeight*.75);
     button.size(100, 100);
 
     
@@ -19,7 +20,10 @@ function setup()
     fill(0, 102, 153);
     textAlign(CENTER);//traced letter
     text('A', 768, 650);
+    
+    stroke(0, 0, 0);
     fill(0,204,0,63);
+    strokeWeight(2);
     circle(550, 600, 100);
 
     fill(0,0,0);
@@ -30,12 +34,21 @@ function setup()
     text('Points:', 1300, 520);
     text('500', 1300, 600);
 
+    
+    noStroke();
     fill(0,0,0);
+    strokeWeight(2);
     textSize(40);
     textAlign(CENTER);//title
-    text('Tracing Letters!',windowWidth*.10, windowHeight*.15);
+    text('Tracing Letters!',windowWidth*.12, windowHeight*.15);
 
-    text("(" + mouseX + ", " + mouseY + ")", mouseX, mouseY);
+    
+    stroke(255, 255, 255);
+    strokeWeight(10);
+    line(windowWidth*.30, windowHeight*.70, windowWidth*.38, windowHeight*.30);
+    noStroke();
+
+    //text("(" + mouseX + ", " + mouseY + ")", mouseX, mouseY);
   }
 
   function windowResized() {
