@@ -46,6 +46,11 @@ function setup()
     stroke(255, 255, 255);
     strokeWeight(10);
     line(windowWidth*.30, windowHeight*.70, windowWidth*.38, windowHeight*.30);
+    
+    //(topx,topy,bottomlx,bottomly,bottomrx,bottomry)
+    fill(255,255,255);
+    strokeWeight(1);
+    triangle(619, 135, 555, 200, 610, 225);
     noStroke();
 
     //text("(" + mouseX + ", " + mouseY + ")", mouseX, mouseY);
