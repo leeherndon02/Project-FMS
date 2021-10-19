@@ -27,10 +27,10 @@ function setup()
     circle(windowWidth/2, windowHeight/2, 100);
 
     fill('gray');
-    rect(676,220,30,90);
-    triangle(690,180,660,220,720,220);
-    rect(676,410,30,90);
-    triangle(690,540,660,500,720,500);
+    rect((windowWidth/2)-14,(windowHeight/2)-140,30,90);
+    triangle((windowWidth/2),(windowHeight/2) -180,(windowWidth/2) -30,(windowHeight/2) - 140,(windowWidth/2) +30,(windowHeight/2) - 140);
+    rect((windowWidth/2)-14,(windowHeight/2)+50,30,90);
+    triangle((windowWidth/2),(windowHeight/2) +180,(windowWidth/2) +30,(windowHeight/2) + 140,(windowWidth/2) -30,(windowHeight/2) + 140);
 
     fill('green');
     circle(windowWidth/2, windowHeight/2 -50, 50);
