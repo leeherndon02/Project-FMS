@@ -44,7 +44,7 @@
       textAlign(LEFT);
       text(game3, windowWidth*.75, windowHeight/2);
       
-      //text("(" + mouseX + ", " + mouseY + ")", mouseX, mouseY);
+      text("(" + mouseX + ", " + mouseY + ")", mouseX, mouseY);
     }
 
     function windowResized() {
