@@ -10,8 +10,6 @@ function setup()
   function draw() 
   {
   
-    
-
     button.position(windowWidth*.05, windowHeight*.75);
     button.size(100, 100);
 

@@ -1,4 +1,13 @@
-  let img, letter1;
+
+let img;
+let letter1;
+let button1;
+var mode;
+var title = 'Train Your FMS';
+var game1 = 'Penny Pinching';
+var game2 = 'Tracing Letters';
+var game3 = 'Typing';
+
 
   function preload(){
     img = loadImage('keyboard.png'); 
@@ -6,21 +15,36 @@
 
   function setup() {
       createCanvas(windowWidth, windowHeight); //height 731, width 1536
-      background(160, 160, 160);
+      mode = 0;
       letter1 = new TracingExercise();
+      button1 = createButton("START");
       
     }
   //create button/clickable text for each game
   //link exercise code
 
   function draw() {
+
+    if (mode==0){
+    background(160, 160, 160);
     setCanvas();
-    TracingExercise.setCanvas();
-    TracingExercise.setElements();
+    }
+    
+    if (mode==1){
+      clear();
+      button1.hide();
+      letter1.show();
+      
+    }
     
   }
 
   function setCanvas() {
+    
+    button1.position(windowWidth*.16, 500);
+    
+    
+
     fill(204, 102, 0);
     circle(windowWidth*.18, windowHeight/2, 220);
     
@@ -36,25 +60,30 @@
     fill(0,0,0);
     textSize(40);
     textAlign(CENTER);
-    text('Train Your FMS',windowWidth*.50, windowHeight*.15);
+    text(title,windowWidth*.50, windowHeight*.15);
     
     textSize(30);
     stroke(50);
     textAlign(CENTER); //penny game title
-    text('Penny Pinching', windowWidth*.18, windowHeight/2);
+    text(game1, windowWidth*.18, windowHeight/2);
 
     textAlign(CENTER);//tracing title
-    text('Tracing Letters', windowWidth*.50, windowHeight/2);
+    text(game2, windowWidth*.50, windowHeight/2);
     
     textAlign(LEFT);//typing title
-    text('Typing', windowWidth*.75, windowHeight/2);
+    text(game3, windowWidth*.75, windowHeight/2);
+
+    button1.mousePressed(() => mode = 1);
+    
+    //clear();
   }
+
 
   function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 
-    
   }
+  
 
   
 

@@ -3,21 +3,17 @@ class TracingExercise{
 
   }
 
-  setCanvas() {
-    createCanvas(windowWidth, windowHeight);
-    button = createButton('MENU');
+  show() {
     background(160, 160, 160);
     
-  }
-
-  setElements() {
-    button.position(windowWidth*.05, windowHeight*.75);
-    button.size(100, 100);
+    var drawButton = createButton("MENU");
+    drawButton.size(200,100);
+    drawButton.position(20,500);
   
     textSize(800);
     fill(0, 102, 153);
     textAlign(CENTER);//traced letter
-    text('A', 768, 650);
+    text('A', 768, windowHeight*.60);
     
     stroke(0, 0, 0);
     fill(0,204,0,63);
@@ -50,5 +46,8 @@ class TracingExercise{
     strokeWeight(1);
     triangle(619, 135, 555, 200, 610, 225);
     noStroke();
-  } 
+    
+  }
+  
+
 }
