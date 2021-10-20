@@ -1,6 +1,7 @@
 function setup() 
   {
     createCanvas(windowWidth, windowHeight);
+    button = createButton('MENU');
     textSize(40);
     frameRate(10);
   }
@@ -9,7 +10,8 @@ function setup()
   {
     background(220);
 
-    
+    button.position(windowWidth*.05, windowHeight*.75);
+    button.size(100, 100);
     stroke('black');
     fill('yellow');
     rect(9, 15, 290, 50);
@@ -18,7 +20,7 @@ function setup()
     
     strokeWeight(2);
     text('Penny Pinching!', 10, 50);
-    textAlign(CENTER);
+    //textAlign(CENTER);
     text('Points:', 1200, 520);
     text('500', 1200, 600);
     
