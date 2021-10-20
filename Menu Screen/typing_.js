@@ -1,0 +1,29 @@
+function setup() 
+  {
+    createCanvas(windowWidth, windowHeight);
+    button = createButton('MENU');
+    textSize(40);
+  }
+  
+  function draw() 
+  {
+    background(220);
+    button.position(windowWidth*.05, windowHeight*.75);
+    button.size(100, 100);
+    stroke('black');
+    fill('yellow');
+    textAlign(CENTER);
+    rect(10, 15, 150, 50);
+
+    fill('black');
+    
+    strokeWeight(2);
+    text('Typing!', 20, 50);
+    textAlign(CENTER);
+    text('Points:', 1200, 520);
+    text('500', 1200, 600);
+
+    fill('red');
+    textAlign(LEFT);
+    text('Dog Chair Computer Bag Ladder Mouse', (windowWidth/2)-300, windowHeight/2);
+  }

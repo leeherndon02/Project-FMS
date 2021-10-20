@@ -9,8 +9,9 @@ class TracingExercise{
     var drawButton = createButton("MENU");
     drawButton.size(200,100);
     drawButton.position(20,500);
+    drawButton.mousePressed(() => {mode = 0});
   
-    textSize(800);
+    textSize(800);  
     fill(0, 102, 153);
     textAlign(CENTER);//traced letter
     text('A', 768, windowHeight*.60);
