@@ -2,7 +2,12 @@
 let img;
 let letter1;
 let button1;
+
+let typing1;
+let button2;
+let button3;
 var mode;
+
 var title = 'Train Your FMS';
 var game1 = 'Penny Pinching';
 var game2 = 'Tracing Letters';
@@ -17,7 +22,10 @@ var game3 = 'Typing';
       createCanvas(windowWidth, windowHeight); //height 731, width 1536
       mode = 0;
       letter1 = new TracingExercise();
+      typing1 = new TypingExercise();
       button1 = createButton("START");
+      button2 = createButton("START");
+      button3 = createButton("START");
       
     }
   //create button/clickable text for each game
@@ -26,22 +34,37 @@ var game3 = 'Typing';
   function draw() {
 
     if (mode==0){
+    button2.show();
+    button3.show();
+    button1.show();
     background(160, 160, 160);
     setCanvas();
     }
     
-    if (mode==1){
+    if (mode==2){
       clear();
+      button3.hide();
       button1.hide();
+      button2.hide();
       letter1.show();
+      
+    }
+
+    if (mode==3){
+      clear();
+      button3.hide();
+      button1.hide();
+      button2.hide();
+      typing1.show();
       
     }
     
   }
 
   function setCanvas() {
-    
     button1.position(windowWidth*.16, 500);
+    button2.position(windowWidth*.48, 500);
+    button3.position(windowWidth*.75, 500);
     
     
 
@@ -74,6 +97,8 @@ var game3 = 'Typing';
     text(game3, windowWidth*.75, windowHeight/2);
 
     button1.mousePressed(() => mode = 1);
+    button2.mousePressed(() => mode = 2);
+    button3.mousePressed(() => mode = 3);
     
     //clear();
   }

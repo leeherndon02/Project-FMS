@@ -1,15 +1,18 @@
-function setup() 
-  {
-    createCanvas(windowWidth, windowHeight);
-    button = createButton('MENU');
-    textSize(40);
+class TypingExercise{
+  constructor (){
+
   }
-  
-  function draw() 
-  {
-    background(220);
-    button.position(windowWidth*.05, windowHeight*.75);
-    button.size(100, 100);
+
+  show() {
+    //clear();
+    background(102, 255, 255);
+
+    var drawButton = createButton("MENU");
+    drawButton.size(100,100);
+    drawButton.position(20,500);
+    drawButton.mousePressed(() => {mode = 0});
+
+    textSize(40);
     stroke('black');
     fill('yellow');
     textAlign(CENTER);
@@ -27,3 +30,5 @@ function setup()
     textAlign(LEFT);
     text('Dog Chair Computer Bag Ladder Mouse', (windowWidth/2)-300, windowHeight/2);
   }
+}
+

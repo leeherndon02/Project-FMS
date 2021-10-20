@@ -7,7 +7,7 @@ class TracingExercise{
     background(160, 160, 160);
     
     var drawButton = createButton("MENU");
-    drawButton.size(200,100);
+    drawButton.size(100,100);
     drawButton.position(20,500);
     drawButton.mousePressed(() => {mode = 0});
   
