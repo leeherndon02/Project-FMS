@@ -5,7 +5,7 @@ class TypingExercise{
 
   show() {
     //clear();
-    background(102, 255, 255);
+    background(160, 160, 160);
 
     var drawButton = createButton("MENU");
     drawButton.size(100,100);
@@ -21,7 +21,7 @@ class TypingExercise{
     fill('black');
     
     strokeWeight(2);
-    text('Typing!', 20, 50);
+    text('Typing!', 85, 50);
     textAlign(CENTER);
     text('Points:', 1200, 520);
     text('500', 1200, 600);

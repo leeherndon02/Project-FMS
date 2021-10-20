@@ -23,6 +23,7 @@ var game3 = 'Typing';
       mode = 0;
       letter1 = new TracingExercise();
       typing1 = new TypingExercise();
+      penny1 = new PennyExercise();
       button1 = createButton("START");
       button2 = createButton("START");
       button3 = createButton("START");
@@ -33,7 +34,7 @@ var game3 = 'Typing';
 
   function draw() {
 
-    if (mode==0){
+    if (mode==0){//default
     button2.show();
     button3.show();
     button1.show();
@@ -41,13 +42,21 @@ var game3 = 'Typing';
     setCanvas();
     }
     
+    if (mode==1){
+      clear();
+      button3.hide();
+      button1.hide();
+      button2.hide();
+      penny1.show();
+      
+    }
+
     if (mode==2){
       clear();
       button3.hide();
       button1.hide();
       button2.hide();
       letter1.show();
-      
     }
 
     if (mode==3){

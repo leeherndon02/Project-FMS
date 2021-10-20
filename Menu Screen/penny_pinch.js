@@ -1,17 +1,17 @@
-function setup() 
-  {
-    createCanvas(windowWidth, windowHeight);
-    button = createButton('MENU');
-    textSize(40);
-    frameRate(10);
+class PennyExercise{
+  constructor (){
+
   }
   
-  function draw() 
-  {
-    background(220);
+  show() {
+    
+    background(160, 160, 160);
 
-    button.position(windowWidth*.05, windowHeight*.75);
-    button.size(100, 100);
+    var drawButton = createButton("MENU");
+    drawButton.size(100,100);
+    drawButton.position(20,500);
+    drawButton.mousePressed(() => {mode = 0});
+
     stroke('black');
     fill('yellow');
     rect(9, 15, 290, 50);
@@ -19,6 +19,7 @@ function setup()
     fill('black');
     
     strokeWeight(2);
+    textSize(40);
     text('Penny Pinching!', 10, 50);
     //textAlign(CENTER);
     text('Points:', 1200, 520);
@@ -44,9 +45,8 @@ function setup()
     stroke('red');
     circle(windowWidth/2, windowHeight/2 -205, 50);
     circle(windowWidth/2, windowHeight/2 +205, 50);
-
-    //text("(" + mouseX + ", " + mouseY + ")", mouseX, mouseY);
-    
-    
-
   }
+    
+}
+
+
