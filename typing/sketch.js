@@ -1,12 +1,18 @@
+// buffer holding characters that are typed
+let chars = "";
+
+
 function setup() 
-  {
+{
     createCanvas(windowWidth, windowHeight);
     button = createButton('MENU');
     textSize(40);
-  }
-  
-  function draw() 
-  {
+    // for layout descriptions
+    //textOutput()
+}
+
+function draw() 
+{
     background(220);
     button.position(windowWidth*.05, windowHeight*.75);
     button.size(100, 100);
@@ -26,4 +32,18 @@ function setup()
     fill('red');
     textAlign(LEFT);
     text('Dog Chair Computer Bag Ladder Mouse', (windowWidth/2)-300, windowHeight/2);
-  }
+}
+
+function keyTyped(event) {
+	chars += key;
+	//speak(key+" "+chars);
+	if(was_typed("test")) {
+		speak("typed!");
+	}
+	return true;
+}
+
+// checks to see whether the provided text was typed
+function was_typed(text) {
+	return chars.substring(chars.length-text.length) === text;
+}
