@@ -1,18 +1,26 @@
 // buffer holding characters that are typed
 let chars = "";
+let targetWords = "";
+let numWords = 1;
+let round = 0;
+// implement this
+let points = 0;
+let totalTimeMS=0;
 
 
-function setup() 
-{
+function setup() {
     createCanvas(windowWidth, windowHeight);
     button = createButton('MENU');
     textSize(40);
+    // choose a word to start with
+    targetWords = random_word();
+    round = 1;
+    speak(targetWords);
     // for layout descriptions
     //textOutput()
 }
 
-function draw() 
-{
+function draw() {
     background(220);
     button.position(windowWidth*.05, windowHeight*.75);
     button.size(100, 100);
@@ -31,16 +39,45 @@ function draw()
 
     fill('red');
     textAlign(LEFT);
-    text('Dog Chair Computer Bag Ladder Mouse', (windowWidth/2)-300, windowHeight/2);
+    text(targetWords, (windowWidth/2)-300, windowHeight/2);
+    // you probably want to display text for the round somewhere
+    // as well as points
+}
+
+function advance () {
+	chars = "";
+	// an array containing each word
+	var spl = targetWords.split(" ");
+	// get more words
+	targetWords = "";
+	for(var i=0;i<=spl.length;i++) {
+		targetWords += random_word() + " ";
+	}
+	// trim the trailing " "
+	targetWords = targetWords.substring(0, targetWords.length-1);
+	round++;
+	speak("typed "+(spl.length)+" words. Now type "+targetWords);
 }
 
 function keyTyped(event) {
+	if(key === "Enter") {
+		return;
+	}
 	chars += key;
-	//speak(key+" "+chars);
-	if(was_typed("test")) {
-		speak("typed!");
+	speak("target "+targetWords);
+	if(was_typed(targetWords)) {
+		advance();
 	}
 	return true;
+}
+
+function keyPressed(key) {
+	if(chars.length > 0) {
+		if(keyCode === BACKSPACE) {
+			speak(chars[chars.length-1]);
+			chars = chars.substring(0, chars.length-1);
+		}
+	}
 }
 
 // checks to see whether the provided text was typed
