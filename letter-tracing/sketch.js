@@ -26,6 +26,8 @@ function setup() {
 	text("POINTS", width*.80, height*.65);
 	noStroke();
 	
+	level1 = new newLevel("A", width, height);
+	
 	textAlign(CENTER, CENTER);
 	strokeWeight(2);
 	textSize(500);
@@ -52,19 +54,12 @@ function setup() {
 	//frameRate(10);
 }
 
+/
+
 //Still need to have visual cue when line is being drawn and pointer remains on letter
 let pointCount = 0;
 function draw() { //DRAW
-	
-	//fill('blue');
-	//rect(-11, 85, 380, 50, 20);
-	
-	/*textSize(10);
-	background(224, 224, 224);
-	//text("(" + mouseX + ", " + mouseY + ")", mouseX, mouseY);*/
-	textSize(50);
-	fill('black');
-	text(pointCount, width*.86, height*.78);
+	level1.initiate();	
 
 	noFill();
 	rectMode(CENTER);
@@ -81,6 +76,15 @@ function draw() { //DRAW
 	noFill();
 
 	lineTrace(); //fill falls through
+	//noFill();
+
+	
+		//fill('blue');
+	//rect(-11, 85, 380, 50, 20);
+	
+	/*textSize(10);
+	background(224, 224, 224);
+	//text("(" + mouseX + ", " + mouseY + ")", mouseX, mouseY);*/
 }
 
 
@@ -89,12 +93,7 @@ function mousePressed(){
   v1x = v1.x;
   v1y = v1.y;
 }
-function incPoint(){
-	noStroke();
-	fill(224, 224, 224);
-	rect(width*.86, height*.78, 100, 50);
-	pointCount = pointCount + 1;
-}
+
 function lineTrace(){
 	//noFill();
 	rec1.update();///////////////
