@@ -1,34 +1,40 @@
 
-class drawEllipse {
-    constructor(ellipseNum, ellipse, width, height){
-        this.ellipseNum = ellipseNum;
-		
-		this.x = x;
-		this.y = y;
-		this.width = width;
+class drawCircles {
+    constructor(circleNum, circleCoord, width, height){
+        this.width = width;
 		this.height = height;
-		this.ellipses = ellipse;
+		
+		this.circleNum = circleNum; //circle quantity
+		
+		this.circleD = 20; //circle diameter
+		this.circleCoord = circleCoord; //contains coordinates [0.49, 0.20, 0.59, 0.68, 0.46, 0.51] 
+		//this.circleArray = [ ]
+
 		this.lines = [ ];
 		this.index = 0;
-		this.elliOver = false;
+		this.circleOver = false; //indicates when hovered over circle
     }
 
-	drawElli(){ //x y r1 r2
+	drawCircles(){ 
+		
+		//noStroke();
+		stroke('black');
+		strokeWeight(1);
+		for (let i = 0; i< this.circleCoord.length; i++){
+			circle(this.width*this.circleCoord[i]. this.height*this.circleCoord[i+1], this.circleD);
+			i = i+2;
+		}
+		
+
 		this.update();
 
-		if (this.elliOver) { //listens to value of rectover
+		if (this.circleOver) { 
 			this.drawLine();
 			//fill('blue');
 		} 
 		else {
 			fill('red');
 		}
-
-		
-		//noStroke();
-		stroke('black');
-		strokeWeight(1);
-		this.elli = ellipse(this.x, this.y, this.w, this.h);
 	}
 
 	drawLine(){
@@ -46,14 +52,14 @@ class drawEllipse {
 	}
     
 	update() {
-		if (this.overElli()) { 
-			this.elliOver = true;
+		if (this.overCircle()) { 
+			this.circleOver = true;
 		} else {
-			this.elliOver = false;
+			this.circleOver = false;
 		}		  
 	}
 
-	overElli(){
+	overCircle(){
 		if (mouseX >= (this.x-this.w/2) && mouseX <= (this.x+this.w/2)
 			&& mouseY >= (this.y-this.h/2) && mouseY <= (this.y+this.h/2)) {
 			return true;

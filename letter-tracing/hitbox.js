@@ -3,8 +3,8 @@ class drawHitbox {
 		//this.rectOver = false;
 		this.recX = x;
 		this.recY = y;
-		this.recW = w;
-		this.recH = h;
+		this.recW = 50;
+		this.recH = 100;
 	}
 
 	drawRec(){

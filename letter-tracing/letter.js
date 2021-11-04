@@ -5,20 +5,22 @@ class drawLetter{
         this.letter = letter;
         this.width = width;
         this.height = height;
-        this.elliNum = 0;
+        this.circleNum = 0;
         this.hitNum = 0;
-        this.ellipseCoord = [ ]
+        this.circleCoord = [ ]
         this.hitboxCoord = [ ]
     }
 
     setCoord(){ //num elli/hbox, coords for
-        if (this.Letter == 'A'){
-            this.elliNum = 3;
+        if (this.letter == 'A'){
+            this.circleNum = 3;
             this.hitNum = 10;
             //x,y based on percentage of height/width
-            this.ellipseCoord = [0.49, 0.20, 0.59, 0.68, 0.46, 0.51] 
-            newEllipses = new drawEllipse(this.elliNum, this.ellipseCoord, this.width, this.height);
+            this.circleCoord = [0.49, 0.20, 0.59, 0.68, 0.46, 0.51] 
+            let newCircles = new drawCircles(this.circleNum, this.circleCoord, this.width, this.height);
+            newCircles.drawCircles();
             this.hitboxCoord = [0.42, 0.62, 0.44, 0.49, 0.46, 0.35, 0.48, 0.25]
+            
         }
     }
 
@@ -27,6 +29,6 @@ class drawLetter{
         strokeWeight(2);
         textSize(500);
         fill(50);
-        letterText = text(this.letter, width/2, height/2);
+        let letterText = text(this.letter, width/2, height/2);
     }
 }
