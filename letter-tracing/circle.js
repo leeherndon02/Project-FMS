@@ -25,7 +25,7 @@ class drawCircles {
 			i = i+2;
 		}
 		
-
+		/*
 		this.update();
 
 		if (this.circleOver) { 
@@ -34,16 +34,20 @@ class drawCircles {
 		} 
 		else {
 			fill('red');
-		}
+		}*/
 	}
-
+/*
 	drawLine(){
 		this.lines[this.lines.length] = { x1: v1x, y1: v1y, x2: this.x, y2: this.y };
 			//line(v1.x, v1.y, elliX, elliY);
-class drawEllipse {
-    constructor(){
-
-    }
+			//var index = 0;
+		while (this.index < this.lines.length) {
+			stroke('white');
+			strokeWeight(15);
+			line(this.lines[this.index].x1, this.lines[this.index].y1, this.lines[this.index].x2, this.lines[this.index].y2);
+				this.index += 1;
+			}
+	}
 
     
 	update() {
@@ -62,5 +66,5 @@ class drawEllipse {
 			return false;
 		}
 		
-	}
+	}*/
 }
