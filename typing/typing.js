@@ -6,6 +6,12 @@ function setup()
 {
     createCanvas(windowWidth, windowHeight);
     button = createButton('MENU');
+    button.position(windowWidth*.05, windowHeight*.75);
+    button.size(100, 100);
+    button.mousePressed(goBack);
+    background(220);
+
+    
     textSize(40);
     // for layout descriptions
     //textOutput()
@@ -13,9 +19,8 @@ function setup()
 
 function draw() 
 {
-    background(220);
-    button.position(windowWidth*.05, windowHeight*.75);
-    button.size(100, 100);
+    
+    
     stroke('black');
     fill('yellow');
     textAlign(CENTER);
@@ -47,3 +52,8 @@ function keyTyped(event) {
 function was_typed(text) {
 	return chars.substring(chars.length-text.length) === text;
 }
+
+function goBack()
+  {
+    window.location = "./menu.html"
+  }

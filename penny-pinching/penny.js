@@ -4,16 +4,17 @@ function setup()
   {
     createCanvas(windowWidth, windowHeight);
     button = createButton('MENU');
+    button.position(windowWidth*.05, windowHeight*.75);
+    button.size(100, 100);
+    button.mousePressed(goBack);
+    background(220);
     textSize(40);
     frameRate(10);
   }
   
   function draw() 
   {
-    background(220);
-
-    button.position(windowWidth*.05, windowHeight*.75);
-    button.size(100, 100);
+    
     stroke('black');
     fill('yellow');
     rect(9, 15, 290, 50);
@@ -60,4 +61,9 @@ function setup()
     
     
 
+  }
+
+  function goBack()
+  {
+    window.location = "./menu.html"
   }
