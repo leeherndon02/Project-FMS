@@ -118,7 +118,6 @@ var game3 = 'Typing';
 
   }
   
- 
 
   
 
