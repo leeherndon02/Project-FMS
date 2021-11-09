@@ -56,7 +56,7 @@ function advance () {
 	}
 	// trim the trailing " "
 	targetWords = targetWords.substring(0, targetWords.length-1);
-	points += 100;
+	points += 100;  //adds points whenever round is typed correctly
 	round++;
 	speak("typed "+(spl.length)+" words. Now type "+targetWords);
 }
