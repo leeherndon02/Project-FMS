@@ -28,19 +28,19 @@ function draw() {
     stroke('black');
     fill('yellow');
     textAlign(CENTER);
-    rect(10, 15, 150, 50);
+    rect(windowWidth*.007, windowWidth*.01, 150, 50);
 
     fill('black');
     
     strokeWeight(2);
-    text('Typing!', 20, 50);
+    text('Typing!', windowWidth*.06, windowHeight*.07);
     textAlign(CENTER);
     text('Points:', 1200, 520);
     text(points, 1200, 600);
 
     fill('red');
     textAlign(LEFT);
-    text(targetWords, (windowWidth/2)-300, windowHeight/2);
+    text(targetWords, windowWidth*.01, windowHeight/2);
     // you probably want to display text for the round somewhere
     // as well as points
 }
