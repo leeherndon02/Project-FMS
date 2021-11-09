@@ -3,6 +3,7 @@ let chars = "";
 let targetWords = "";
 let numWords = 1;
 let round = 0;
+let point = 0;
 // implement this
 let points = 0;
 let totalTimeMS=0;
@@ -35,7 +36,7 @@ function draw() {
     text('Typing!', 20, 50);
     textAlign(CENTER);
     text('Points:', 1200, 520);
-    text('500', 1200, 600);
+    text(points, 1200, 600);
 
     fill('red');
     textAlign(LEFT);
@@ -55,6 +56,7 @@ function advance () {
 	}
 	// trim the trailing " "
 	targetWords = targetWords.substring(0, targetWords.length-1);
+	points += 100;
 	round++;
 	speak("typed "+(spl.length)+" words. Now type "+targetWords);
 }
