@@ -7,7 +7,14 @@ let point = 0;
 // implement this
 let points = 0;
 let totalTimeMS=0;
+let sounds = [];
 
+
+function preload() {
+	for(var i=0;i<5;++i) {
+		sounds.push(loadSound("assets/round"+(i+1)+".ogg"));
+	}
+}
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -59,6 +66,7 @@ function advance () {
 	incrementPoints();  //adds points whenever round is typed correctly
 	round++;
 	speak("typed "+(spl.length)+" words. Now type "+targetWords);
+	play_random_sound();
 }
 
 function keyTyped(event) {
@@ -97,4 +105,9 @@ function incrementPoints() {
 	{
 		points*=2;
 	}
+}
+
+function play_random_sound() {
+	var idx = (Math.random()*4)|0;
+	sounds[idx].play()
 }
