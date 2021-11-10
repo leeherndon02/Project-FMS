@@ -9,6 +9,7 @@ let points = 0;
 let totalTimeMS=0;
 let sounds = [];
 
+let isEqual = false;
 
 function preload() {
 	for(var i=0;i<5;++i) {
@@ -23,7 +24,7 @@ function setup() {
     // choose a word to start with
     targetWords = random_word();
     round = 1;
-    speak(targetWords);
+    //speak(targetWords);
     // for layout descriptions
     //textOutput()
 }
@@ -35,7 +36,7 @@ function draw() {
     stroke('black');
     fill('yellow');
     textAlign(CENTER);
-    rect(windowWidth*.007, windowWidth*.01, 150, 50);
+    rect(windowWidth*.01, windowHeight*.030, 150, 50);
 
     fill('black');
     
@@ -50,6 +51,20 @@ function draw() {
     text(targetWords, windowWidth*.01, windowHeight/2);
     // you probably want to display text for the round somewhere
     // as well as points
+
+	if (isEqual){
+		fill('green');
+
+	} else {
+		fill('red');
+	}
+
+	textAlign(LEFT);
+	text(targetWords, (windowWidth*.01), windowHeight/2);
+	text(chars, (windowWidth*.2), windowHeight*.7);
+	textAlign(CENTER, CENTER);
+	fill('blue');
+	text('Round: ' + round, (windowWidth*.5), windowHeight*.2);
 }
 
 function advance () {
@@ -65,8 +80,9 @@ function advance () {
 	// trim the trailing " "
 	targetWords = targetWords.substring(0, targetWords.length-1);
 	round++;
-	speak("typed "+(spl.length)+" words for a total of "+points+". Now type "+targetWords);
+	//speak("typed "+(spl.length)+" words for a total of "+points+". Now type "+targetWords);
 	play_random_sound();
+	isEqual = false;
 }
 
 function keyTyped(event) {
@@ -74,7 +90,16 @@ function keyTyped(event) {
 		return;
 	}
 	chars += key;
-	speak("target "+targetWords);
+
+	for(i=0;i<chars.length;i++){ 
+		if(chars.charAt(i) === targetWords.charAt(i)){
+			isEqual = true;
+		}
+		else{
+			isEqual = false;
+		}
+	}
+	//speak("target "+targetWords);
 	if(was_typed(targetWords)) {
 		advance();
 	}
@@ -84,7 +109,7 @@ function keyTyped(event) {
 function keyPressed(key) {
 	if(chars.length > 0) {
 		if(keyCode === BACKSPACE) {
-			speak(chars[chars.length-1]);
+			//speak(chars[chars.length-1]);
 			chars = chars.substring(0, chars.length-1);
 		}
 	}
