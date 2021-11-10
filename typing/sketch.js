@@ -54,6 +54,7 @@ function draw() {
 
 function advance () {
 	chars = "";
+	incrementPoints();
 	// an array containing each word
 	var spl = targetWords.split(" ");
 	// get more words
@@ -63,9 +64,8 @@ function advance () {
 	}
 	// trim the trailing " "
 	targetWords = targetWords.substring(0, targetWords.length-1);
-	incrementPoints();  //adds points whenever round is typed correctly
 	round++;
-	speak("typed "+(spl.length)+" words. Now type "+targetWords);
+	speak("typed "+(spl.length)+" words for a total of "+points+". Now type "+targetWords);
 	play_random_sound();
 }
 
@@ -95,16 +95,11 @@ function was_typed(text) {
 	return chars.substring(chars.length-text.length) === text;
 }
 
-//increments points. After first round, which gives 100 points, points are doubled after each round
+//increments points relative to number of keys typed
+// make sure this is never called more than once during the same round, and before reassigning target_words
 function incrementPoints() {
-	while(points<=0)
-	{
-		points+= 100;
-	}
-	if(points >= 100 && round >= 2)
-	{
-		points*=2;
-	}
+	var w = targetWords.replaceAll(" ", "");
+	points += w.length;
 }
 
 function play_random_sound() {
