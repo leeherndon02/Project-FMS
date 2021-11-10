@@ -1,4 +1,4 @@
-let title = "SkillBuilder";
+let title = "SkillBuilder!";
 
 
 function preload(){
@@ -8,7 +8,7 @@ function preload(){
 function setup()
 {
   createCanvas(windowWidth,windowHeight);
-  background("gray");
+  background('gray');
 
   button1 = createButton('Letter Tracing');
   button1.position(windowWidth*.16, windowHeight/2);
@@ -25,7 +25,7 @@ function setup()
   button2.position(windowWidth*.48, windowHeight/2);
   //button2.size(100,100);
 
-  button3 = createButton('Typing');
+  button3 = createButton('Typing Game');
   button3.position(windowWidth*.75, windowHeight/2);
   image(img, windowWidth*.68, windowHeight*.40, windowWidth*.19, windowHeight*.20);
   //button3.size(100,100);
@@ -39,7 +39,7 @@ function draw()
     fill('black');
     stroke(10);
     textAlign(CENTER);
-    fill('orange');
+    fill('yellow');
     
     text(title,windowWidth*.50, windowHeight*.15);
 
