@@ -62,7 +62,8 @@ function draw() {
 
   textAlign(LEFT);
   text(targetWords, (windowWidth*.01), windowHeight/2);
-  text(chars, (windowWidth*.2), windowHeight*.7);
+  fill('black');
+  text(chars, (windowWidth*.01), windowHeight*.6);
   textAlign(CENTER, CENTER);
   fill('blue');
   text('Round: ' + round, (windowWidth*.5), windowHeight*.2);
