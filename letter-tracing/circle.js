@@ -25,7 +25,7 @@ class drawCircles {
 			i = i+2;
 		}
 		
-		/*
+		
 		this.update();
 
 		if (this.circleOver) { 
@@ -34,9 +34,9 @@ class drawCircles {
 		} 
 		else {
 			fill('red');
-		}*/
+		}
 	}
-/*
+
 	drawLine(){
 		this.lines[this.lines.length] = { x1: v1x, y1: v1y, x2: this.x, y2: this.y };
 			//line(v1.x, v1.y, elliX, elliY);
