@@ -5,11 +5,15 @@ let lines = [ ];
 let circleOver = false;
 let index = 0;
 
+let circleX = 50;
+let circleY = 100;
+let diameter = 50;
+
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	background(220);
 	drawLetter();
-	drawCircle();
+	
 }
 
 function draw() {
@@ -24,8 +28,9 @@ function draw() {
 	//textSize(20);
 	//text(c, 200, 400);
 
-
-
+	strokeWeight(1);
+	stroke('black');
+	drawCircle(circleX,circleY,diameter);
 	if(mouseIsPressed){
 		stroke('white');
 		//ellipse(mouseX, mouseY, 10, 10);
@@ -52,32 +57,43 @@ function drawLetter(){
 	fill(50);
 	text('A', windowWidth*.50, 400);
 }
+
 function mousePressed(){
 	v1 = createVector(mouseX, mouseY) //need to create first line point
 	v1x = v1.x;
 	v1y = v1.y;
-  }
+}
 
-  function drawCircle(){
-	
-  }
+function drawCircle(xC,yC,diam){
+	update();
+
+	if (circleOver) {
+		fill('blue');
+	} 
+
+	else {
+		fill('red');
+	}
+
+	circle(xC, yC, diam);
+}
 
 function update() {
-	if (overCircle()) { 
+	if (overCircle(circleX, circleY, diameter)) { 
 		circleOver = true;
 	} else {
-		this.circleOver = false;
+		circleOver = false;
 	}		  
 }
 
-function overCircle(){
-	if (mouseX >= (x-w/2) && mouseX <= (x+w/2)
-		&& mouseY >= (y-h/2) && mouseY <= (y+h/2)) {
-		return true;
+function overCircle(x, y, d) {
+	const disX = x - mouseX;
+	const disY = y - mouseY;
+	if(sqrt(sq(disX) + sq(disY)) < d/2 ) {
+	  return true;
 	} else {
-		return false;
+	  return false;
 	}
-	
 }
 
 
