@@ -1,15 +1,17 @@
-let circle1, circle2;
+let circle1
+let circle2;
+let points = 0;
 
 function setup() 
-  {
+{
     createCanvas(windowWidth, windowHeight);
     button = createButton('MENU');
     textSize(40);
     frameRate(10);
-  }
+}
   
-  function draw() 
-  {
+function draw() 
+{
     background(220);
 
     button.position(windowWidth*.05, windowHeight*.75);
@@ -23,7 +25,7 @@ function setup()
     strokeWeight(2);
     text('Penny Pinching!', 10, 50);
     //textAlign(CENTER);
-    text('Points:', 1200, 520);
+    text('Points: '+points, 1200, 520);
     text('500', 1200, 600);
     
 
@@ -57,7 +59,4 @@ function setup()
       circle(touches[i].x, touches[i].y, 75);
       
     }
-    
-    
-
-  }
+}
