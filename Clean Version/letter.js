@@ -7,9 +7,16 @@ let index = 0;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
+	//START OF GUI/MENU INTEGRATION, DO NOT TOUCH
+	button = createButton('MENU');
+    button.position(windowWidth*.05, windowHeight*.75);
+    button.size(100, 100);
+    button.mousePressed(goBack);
+	//END OF GUI
 	background(220);
 	drawLetter();
 	drawCircle();
+	
 }
 
 function draw() {
@@ -79,5 +86,9 @@ function overCircle(){
 	}
 	
 }
-
+//DO NOT TOUCH, IS FOR THE MENU BUTTON AND PART OF GUI
+function goBack()
+  {
+    window.location = "./menu.html"
+  }
 

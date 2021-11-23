@@ -3,11 +3,12 @@ let circle1, circle2;
 function setup() 
   {
     createCanvas(windowWidth, windowHeight);
+    //GUI FUNCTIONALITY, DO NOT TOUCH
     button = createButton('MENU');
     button.position(windowWidth*.05, windowHeight*.75);
     button.size(100, 100);
     button.mousePressed(goBack);
-    
+    //END OF GUI
     textSize(40);
     frameRate(10);
   }
@@ -66,7 +67,7 @@ function setup()
 
   }
 
-
+//GUI FUNCTIONALITY, DO NOT TOUCH
   function goBack()
   {
     window.location = "./menu.html"

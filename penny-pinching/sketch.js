@@ -1,5 +1,9 @@
-let circle1
-let circle2;
+//let cx = windowWidth/2;
+//let cy1 = windowHeight/2 - 50;
+//let cy2 = windowHeight/2 + 50;
+//let circleOver = false;
+//let diam = 80;
+
 let points = 0;
 
 function setup() 
@@ -42,8 +46,10 @@ function draw()
 
     noFill();
     stroke('green');
-    circle(windowWidth/2, windowHeight/2 -50, 75);
-    circle(windowWidth/2, windowHeight/2 +50, 75);
+    circle(windowWidth/2, windowHeight/2 -50, 80);
+    circle(windowWidth/2, windowHeight/2 +50, 80);
+    //drawCircle(cx1, cy1, diam);
+    //drawCircle(cx2, cy2, diam);
 
     //noFill();
     //stroke('red');
@@ -54,9 +60,37 @@ function draw()
 
     for (var i = 0; i < touches.length; i++)
     {
-      stroke('red');
-      fill('red');
-      circle(touches[i].x, touches[i].y, 75);
+      stroke('black');
+      fill('black');
+      circle(touches[i].x, touches[i].y, 60);
       
     }
 }
+/*
+function drawCircle(x, y, d)
+{
+  update(x, y, d);
+  if(circleOver)
+  {
+    fill('green');
+  }
+  circle(x, y, d);
+}
+function update(x, y, d);
+{
+  if(overCircle(cx1, cy1, diam) && overCircle(cx2,cy2,diam))
+  {
+    circleOver = true;
+  }
+}
+
+function overCircle(x, y, d)
+{
+  const disX = x - mouseX;
+  const disY = y - mouseY;
+  if(sqrt(sq(disX) + sq(disY)) < d/2)
+  {
+    return true;
+  }
+}
+*/
