@@ -45,8 +45,6 @@ function draw()
     noFill();
     stroke('green');
     drawCircle(windowWidth/2, windowHeight/2 -50, 80);
-    noFill();
-    stroke('green');
     drawCircle(windowWidth/2, windowHeight/2 +50, 80);
 
     for (var i = 0; i < touches.length; i++)
@@ -77,7 +75,7 @@ function update(x, y, diam) {
   else 
   {
 		circleOver = false;
-	}		  
+	}
 }
 
 function overCircle(x, y, d) {
