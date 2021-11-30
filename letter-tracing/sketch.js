@@ -10,6 +10,8 @@ let diameter = 50; //circle diameter
 let points = 0; //incremented when mouse hovers over circles
 
 let lines = [ ]; //holds the lines drawn so far
+let numberOfPixels;
+let rgbNum;
 
 
 
@@ -21,37 +23,49 @@ function setup() {
 
 	circleX = width*.5; //setting the base dimensions for circles; felt easier to modify this way
 	circleY = height*.5;
-	
-	
+
+	let d = pixelDensity();
+	numberOfPixels = 4 * (width * d) * (height * d);
+
+	drawLetter();
+	rgbVal();
 	
 }
 
 function draw() {
 	drawLetter(); //places letter in background
-	
+	c = get(mouseX-10, mouseY+20); 
+
+	for (let i = 0; i < lines.length; i++) { //this displays the traced lines so they stay on top of the letter
+		lines[i].display();
+	  }
+
+	loadPixels();
+	let count = 0;
+	for( let i = 0; i < numberOfPixels; i+= 4 ) {
+		// if the RGB values make white, then increment counter
+		if( pixels[ i ] == 50 && pixels[ i + 1 ] == 50 && pixels[ i + 2 ] == 50 && pixels[ i + 3 ] == 255){
+			count++;
+		} 
+	}
+
+	if (count < rgbNum*.55) { //code to run after certain percentage has been traced
+		noStroke();
+		fill("red");
+		textSize(40);
+		text("cool!", 200, 200);
+  	}
 
 	noStroke();
 	fill(200);
 	rectMode(CENTER);
 	rect(windowWidth*.12, 390, 200, 200); //this is the bg for the rgb values so they stay visible
 
-	c = get(mouseX, mouseY); //returns rgb value where cursor hovers as an array: [rgba]
+	//returns rgb value where cursor hovers as an array: [rgba]
 	textSize(20);
-	fill("black");
+	fill("red");
 	text(c, 200, 400); //displays the rgb (for testing)
-
-	// fill('black');
-	// textSize(100);
-	// text(points, windowWidth*.80, 400); 
-
-	noStroke();
-	drawCircle(circleX-20,circleY-250,diameter);//these are the circles on the letter
-	drawCircle(circleX+185,circleY+200,diameter);
-	drawCircle(circleX-80,circleY+45,diameter);
-
-	for (let i = 0; i < lines.length; i++) { //this displays the traced lines so they stay on top of the letter
-		lines[i].display();
-	  }
+	text(count, 200, 420);
 }
 
 function mouseDragged(){ //runs when 
@@ -59,7 +73,7 @@ function mouseDragged(){ //runs when
 		rectMode(CORNER);
 		fill('green'); //indicates that cursor is on the letter and changes background to green
 		rect(0 , 0, width, height);
-		lines.push(new drawLines(mouseX-10, mouseY+20, mouseX-10, mouseY+20)); //pushes a new line to the lines array
+		//lines.push(new drawLines(mouseX-10, mouseY+20, mouseX-10, mouseY+20)); //pushes a new line to the lines array
 
 
 	}
@@ -67,17 +81,16 @@ function mouseDragged(){ //runs when
 		rectMode(CORNER);
 		fill('red'); //indicates that cursor is off of the letter and changes background to red
 		rect(0 , 0, width, height); 
-		stroke('white');
-		strokeWeight(15);
-		lines.push(new drawLines(mouseX-10, mouseY+20, mouseX-10, mouseY+20)); //pushes lines drawn to array
+	
+		//lines.push(new drawLines(mouseX-10, mouseY+20, mouseX-10, mouseY+20)); //pushes lines drawn to array
 
 		}
+	lines.push(new drawLines(mouseX-10, mouseY+30, mouseX-10, mouseY+30));
 }
 
 function drawLetter(){ //draws the letter in the background
 	noStroke();
 	textAlign(CENTER, CENTER);
-	strokeWeight(2);
 	textSize(700);
 	fill(50);
 	text('A', windowWidth*.50, 400);
@@ -117,6 +130,17 @@ function overCircle(x, y, d) { //calculates if mouse is over the circle
 	}
 }
 
+function rgbVal(){
+	loadPixels();
+	rgbNum = 0;
+	for( let i = 0; i < numberOfPixels; i+= 4 ) {
+		// if the RGB values make white, then increment counter
+		if( pixels[ i ] == 50 && pixels[ i + 1 ] == 50 && pixels[ i + 2 ] == 50 && pixels[ i + 3 ] == 255){
+			rgbNum++;
+		} 
+	}
+}
+
 class drawLines { //line objects stored in lines array
 	constructor(x1, y1, x2, y2){
 		this.x1 = x1;
@@ -127,7 +151,7 @@ class drawLines { //line objects stored in lines array
 
 	display(){
 		stroke('white');
-		strokeWeight(15);
+		strokeWeight(30);
 		line(this.x1, this.y1, this.x2, this.y2);
 	}
 }
