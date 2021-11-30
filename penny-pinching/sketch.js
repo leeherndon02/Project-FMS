@@ -4,6 +4,7 @@ let circleX = 50;
 let circleY = 100;
 let diameter = 50;
 let circleOver = false;
+let circleOver2 = false;
 
 function setup() 
 {
@@ -45,7 +46,8 @@ function draw()
     noFill();
     stroke('green');
     drawCircle(windowWidth/2, windowHeight/2 -50, 80);
-    drawCircle(windowWidth/2, windowHeight/2 +50, 80);
+    noFill();
+    drawCircle2(windowWidth/2, windowHeight/2 +50, 80);
 
     for (var i = 0; i < touches.length; i++)
     {
@@ -79,6 +81,43 @@ function update(x, y, diam) {
 }
 
 function overCircle(x, y, d) {
+	const disX = x - mouseX;
+	const disY = y - mouseY;
+	if(sqrt(sq(disX) + sq(disY)) < d/2 ) 
+  {
+	  return true;
+	} 
+  else 
+  {
+	  return false;
+	}
+}
+
+//circle2 functionality
+function drawCircle2(x,y,diam)
+{
+	update2(x, y, diam);
+
+	if (circleOver2) 
+  {
+		fill('pink');
+	}
+
+	circle(x, y, diam);
+}
+
+function update2(x, y, diam) {
+	if (overCircle2(x, y, diam)) 
+  { 
+		circleOver2 = true;
+	} 
+  else 
+  {
+		circleOver2 = false;
+	}
+}
+
+function overCircle2(x, y, d) {
 	const disX = x - mouseX;
 	const disY = y - mouseY;
 	if(sqrt(sq(disX) + sq(disY)) < d/2 ) 
