@@ -1,6 +1,9 @@
-let circle1
-let circle2;
 let points = 0;
+
+let circleX = 50;
+let circleY = 100;
+let diameter = 50;
+let circleOver = false;
 
 function setup() 
 {
@@ -13,7 +16,6 @@ function setup()
 function draw() 
 {
     background(220);
-
     button.position(windowWidth*.05, windowHeight*.75);
     button.size(100, 100);
     stroke('black');
@@ -25,8 +27,8 @@ function draw()
     strokeWeight(2);
     text('Penny Pinching!', 10, 50);
     //textAlign(CENTER);
-    text('Points: '+points, 1200, 520);
-    text('500', 1200, 600);
+    text('Points:', 1200, 520);
+    text(points, 1200, 600);
     
 
     fill('brown');
@@ -42,21 +44,49 @@ function draw()
 
     noFill();
     stroke('green');
-    circle(windowWidth/2, windowHeight/2 -50, 75);
-    circle(windowWidth/2, windowHeight/2 +50, 75);
-
-    //noFill();
-    //stroke('red');
-    //circle(windowWidth/2, windowHeight/2 -205, 50);
-    //circle(windowWidth/2, windowHeight/2 +205, 50);
-
-    //text("(" + mouseX + ", " + mouseY + ")", mouseX, mouseY);
+    drawCircle(windowWidth/2, windowHeight/2 -50, 80);
+    drawCircle(windowWidth/2, windowHeight/2 +50, 80);
 
     for (var i = 0; i < touches.length; i++)
     {
-      stroke('red');
-      fill('red');
-      circle(touches[i].x, touches[i].y, 75);
+      stroke('black');
+      fill('black');
+      circle(touches[i].x, touches[i].y, 60);
       
     }
+}
+function drawCircle(x,y,diam)
+{
+	update(x, y, diam);
+
+	if (circleOver) 
+  {
+		fill('green');
+	}
+
+	circle(x, y, diam);
+}
+
+function update(x, y, diam) {
+	if (overCircle(x, y, diam)) 
+  { 
+		circleOver = true;
+	} 
+  else 
+  {
+		circleOver = false;
+	}
+}
+
+function overCircle(x, y, d) {
+	const disX = x - mouseX;
+	const disY = y - mouseY;
+	if(sqrt(sq(disX) + sq(disY)) < d/2 ) 
+  {
+	  return true;
+	} 
+  else 
+  {
+	  return false;
+	}
 }

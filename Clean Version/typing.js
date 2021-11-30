@@ -20,10 +20,12 @@ function preload() {
 function setup() {
     createCanvas(windowWidth, windowHeight);
     background(220);
+    //START OF GUI FUNCTIONALITY, DO NOT TOUCH
     button = createButton('MENU');
-    button.mousePressed(goBack);
     button.position(windowWidth*.05, windowHeight*.75);
     button.size(100, 100);
+    button.mousePressed(goBack);
+    //END OF GUI
     textSize(40);
     
     targetWords = random_word();
@@ -134,7 +136,7 @@ function play_random_sound() {
   var idx = (Math.random()*4)|0;
   sounds[idx].play()
 }
-
+//GUI FUNCTIONALITY, DO NOT TOUCH
 function goBack()
 {
   window.location = "./menu.html"
