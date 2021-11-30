@@ -11,8 +11,8 @@ let points = 0; //incremented when mouse hovers over circles
 
 let lines = [ ]; //holds the lines drawn so far
 let numberOfPixels;
-let rgbNum;
-
+let pixelCount;
+let chosenLetter;
 
 
 function setup() {
@@ -21,19 +21,17 @@ function setup() {
 	fill(200);
 	rect(0,0,width, height);//was experimenting with changing fill of a shape vs the whole background
 
-	circleX = width*.5; //setting the base dimensions for circles; felt easier to modify this way
-	circleY = height*.5;
-
 	let d = pixelDensity();
 	numberOfPixels = 4 * (width * d) * (height * d);
-
-	drawLetter();
-	rgbVal();
+	
+	chosenLetter = random_letter(); 
+	displayLetter(chosenLetter);//must be in setup so that pixels are counted
+	countPixels();
 	
 }
 
 function draw() {
-	drawLetter(); //places letter in background
+	displayLetter(chosenLetter); //places letter in background
 	c = get(mouseX-10, mouseY+20); 
 
 	for (let i = 0; i < lines.length; i++) { //this displays the traced lines so they stay on top of the letter
@@ -49,7 +47,8 @@ function draw() {
 		} 
 	}
 
-	if (count < rgbNum*.55) { //code to run after certain percentage has been traced
+	if (count < pixelCount*.55) { //code to run after certain percentage has been traced
+		advance();
 		noStroke();
 		fill("red");
 		textSize(40);
@@ -65,7 +64,7 @@ function draw() {
 	textSize(20);
 	fill("red");
 	text(c, 200, 400); //displays the rgb (for testing)
-	text(count, 200, 420);
+	text(pixelCount, 200, 420);
 }
 
 function mouseDragged(){ //runs when 
@@ -88,57 +87,31 @@ function mouseDragged(){ //runs when
 	lines.push(new drawLines(mouseX-10, mouseY+30, mouseX-10, mouseY+30));
 }
 
-function drawLetter(){ //draws the letter in the background
+function displayLetter(letter){ //draws the letter in the background
 	noStroke();
 	textAlign(CENTER, CENTER);
 	textSize(700);
 	fill(50);
-	text('A', windowWidth*.50, 400);
-
+	text(letter, windowWidth*.50, 400);
 }
 
-function drawCircle(xC,yC,diam){  //draws the circles on the letter
-	update(xC, yC, diam);
-
-	if (circleOver) { //changes fill color when mouse over circle
-		fill(50);
-		++points;
-	} 
-	else {
-		fill('black');	
-	}
-
-	circle(xC, yC, diam);
-}
-
-function update(cX, cY, diam) {
-	if (overCircle(cX, cY, diam)) { 
-		circleOver = true; //changes value of circleOver
-		
-	} else {
-		circleOver = false;
-	}		  
-}
-
-function overCircle(x, y, d) { //calculates if mouse is over the circle
-	const disX = x - mouseX;
-	const disY = y - mouseY;
-	if(sqrt(sq(disX) + sq(disY)) < d/2 ) {
-	  return true;
-	} else {
-	  return false;
-	}
-}
-
-function rgbVal(){
+function countPixels(){
 	loadPixels();
-	rgbNum = 0;
+	pixelCount = 0;
 	for( let i = 0; i < numberOfPixels; i+= 4 ) {
 		// if the RGB values make white, then increment counter
 		if( pixels[ i ] == 50 && pixels[ i + 1 ] == 50 && pixels[ i + 2 ] == 50 && pixels[ i + 3 ] == 255){
-			rgbNum++;
+			pixelCount++;
 		} 
 	}
+}
+
+function advance(){
+	lines = [ ];
+	clear();
+	chosenLetter = random_letter();
+	displayLetter(chosenLetter) 
+	countPixels();
 }
 
 class drawLines { //line objects stored in lines array
