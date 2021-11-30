@@ -1,11 +1,7 @@
 
 
-let c; //variable that stores the rgb array from .get()
+let c, cnv; //variable that stores the rgb array from .get()
 
-let circleOver = false; //boolean to indicate if mouse is over the circles (will be used for points??)
-let circleX; //the x coordinate for the circle
-let circleY; //the y coordinate for the circle
-let diameter = 50; //circle diameter
 
 let points = 0; //incremented when mouse hovers over circles
 
@@ -16,7 +12,7 @@ let chosenLetter;
 
 
 function setup() {
-	createCanvas(windowWidth, windowHeight);
+	cnv = createCanvas(windowWidth, windowHeight);
 	//background(200);
 	fill(200);
 	rect(0,0,width, height);//was experimenting with changing fill of a shape vs the whole background
@@ -47,12 +43,14 @@ function draw() {
 		} 
 	}
 
-	if (count < pixelCount*.55) { //code to run after certain percentage has been traced
-		advance();
+	if (count < pixelCount*.52) { //code to run after certain percentage has been traced
 		noStroke();
-		fill("red");
+		fill("purple");
 		textSize(40);
 		text("cool!", 200, 200);
+		
+		advance();
+		
   	}
 
 	noStroke();
