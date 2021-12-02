@@ -27,7 +27,7 @@ function setup() {
     button.size(100, 100);
     button.mousePressed(goBack);
     //END OF GUI
-    textSize(40);
+    textSize(35);
     
     targetWords = random_word();
     round = 1;
@@ -51,6 +51,7 @@ function draw() {
   text(points, windowWidth*.888, windowHeight*.9);
   textAlign(LEFT);
   text('Instructions: Type the word(s) displayed on the screen.', windowWidth*.2, windowHeight*.07);
+  text('Hit \'Ctrl+Enter\' to enable Reader mode.', windowWidth*.2, windowWidth*.075);
   fill('red');
   // you probably want to display text for the round somewhere
   // as well as points
