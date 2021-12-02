@@ -63,7 +63,27 @@ function draw() {
 
   textAlign(LEFT);
 
-  text(targetWords, (windowWidth*.01), windowHeight/2);
+  var words = targetWords.split(" ");
+  // play it safe, split up words at a max of ten
+  // maybe not playing it completely safe though because we don't want words falling off just in the other direction
+  // in the hypothetical assumption that someone gets that far
+  if(words.length>10) {
+    // contains the text we want to show with newlines
+    var t = "";
+    for(var i=0;i<words.length;++i) {
+      if((i+1) % 10 === 0) {
+        t += "\n";
+      }
+      t += words[i];
+      if(i <= words.length-1) {
+        t += " ";
+      }
+    }
+    text(t, (windowWidth*.01), windowHeight/2);
+  }
+  else {
+    text(targetWords, (windowWidth*.01), windowHeight/2);
+  }
   fill('black');
   text(chars, (windowWidth*.01), windowHeight*.6);
   textAlign(CENTER, CENTER);
