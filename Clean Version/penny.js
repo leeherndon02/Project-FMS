@@ -33,7 +33,7 @@ function setup()
     //textAlign(CENTER);
     text('Points:', windowWidth*.85, windowHeight*.7);
     text(points, windowWidth*.888, windowHeight*.8);
-    text('Instructions: Alternate touch between the 2 circles to gain points.', windowWidth*.10, windowHeight*.15);
+    text('Instructions: Touch screen and drag circles into the green area to gain points.', windowWidth*.10, windowHeight*.15);
 
     fill('brown');
     stroke('black');
