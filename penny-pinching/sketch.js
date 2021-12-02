@@ -11,7 +11,7 @@ function setup()
     createCanvas(windowWidth, windowHeight);
     button = createButton('MENU');
     textSize(40);
-    frameRate(10);
+    frameRate();
 }
   
 function draw() 
