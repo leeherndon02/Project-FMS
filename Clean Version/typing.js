@@ -50,8 +50,6 @@ function draw() {
   text(points, 1200, 600);
 
   fill('red');
-  textAlign(LEFT);
-  text(targetWords, windowWidth*.01, windowHeight/2);
   // you probably want to display text for the round somewhere
   // as well as points
 
@@ -63,6 +61,7 @@ function draw() {
   }
 
   textAlign(LEFT);
+
   text(targetWords, (windowWidth*.01), windowHeight/2);
   fill('black');
   text(chars, (windowWidth*.01), windowHeight*.6);
@@ -84,7 +83,7 @@ function advance () {
   // trim the trailing " "
   targetWords = targetWords.substring(0, targetWords.length-1);
   round++;
-  //speak("typed "+(spl.length)+" words for a total of "+points+". Now type "+targetWords);
+  speak("typed "+(spl.length)+" words for a total of "+points+". Now type "+targetWords);
   play_random_sound();
   isEqual = false;
 }
@@ -103,7 +102,7 @@ function keyTyped(event) {
       isEqual = false;
     }
   }
-  //speak("target "+targetWords);
+  speak("target "+targetWords);
   if(was_typed(targetWords)) {
     advance();
   }
@@ -114,7 +113,7 @@ function keyTyped(event) {
 function keyPressed(key) {
   if(chars.length > 0) {
     if(keyCode === BACKSPACE) {
-      //speak(chars[chars.length-1]);
+      speak(chars[chars.length-1]);
       chars = chars.substring(0, chars.length-1);
     }
   }
