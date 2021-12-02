@@ -1,4 +1,10 @@
-let circle1, circle2;
+let points = 0;
+
+let circleX = 50;
+let circleY = 100;
+let diameter = 50;
+let circleOver = false;
+let circleOver2 = false;
 
 function setup() 
   {
@@ -10,27 +16,24 @@ function setup()
     button.mousePressed(goBack);
     //END OF GUI
     textSize(40);
-    frameRate(10);
+    frameRate(60);
   }
   
   function draw() 
   {
     background(220);
-
-    button.position(windowWidth*.05, windowHeight*.75);
-    button.size(100, 100);
     stroke('black');
     fill('yellow');
-    rect(9, 15, 290, 50);
+    rect(windowHeight*.014, windowHeight*.02, 300, 50);
 
     fill('black');
     
     strokeWeight(2);
-    text('Penny Pinching!', 10, 50);
+    text('Penny Pinching!', windowHeight*.015, windowHeight*.07);
     //textAlign(CENTER);
-    text('Points:', 1200, 520);
-    text('500', 1200, 600);
-    
+    text('Points:', windowWidth*.85, windowHeight*.7);
+    text(points, windowWidth*.888, windowHeight*.8);
+    text('Instructions: Alternate touch between the 2 circles to gain points.', windowWidth*.10, windowHeight*.15);
 
     fill('brown');
     stroke('black');
@@ -45,28 +48,92 @@ function setup()
 
     noFill();
     stroke('green');
-    circle(windowWidth/2, windowHeight/2 -50, 75);
-    circle(windowWidth/2, windowHeight/2 +50, 75);
-
-    //noFill();
-    //stroke('red');
-    //circle(windowWidth/2, windowHeight/2 -205, 50);
-    //circle(windowWidth/2, windowHeight/2 +205, 50);
-
-    //text("(" + mouseX + ", " + mouseY + ")", mouseX, mouseY);
+    drawCircle(windowWidth/2, windowHeight/2 -50, 80);
+    noFill();
+    drawCircle2(windowWidth/2, windowHeight/2 +50, 80);
 
     for (var i = 0; i < touches.length; i++)
     {
-      stroke('red');
-      fill('red');
-      circle(touches[i].x, touches[i].y, 75);
+      stroke('black');
+      fill('black');
+      circle(touches[i].x, touches[i].y, 60);
       
     }
-    
-    
-
   }
-
+  function drawCircle(x,y,diam)
+  {
+    update(x, y, diam);
+  
+    if (circleOver) 
+    {
+      fill('green');
+      points++;
+    }
+  
+    circle(x, y, diam);
+  }
+  
+  function update(x, y, diam) {
+    if (overCircle(x, y, diam)) 
+    { 
+      circleOver = true;
+    } 
+    else 
+    {
+      circleOver = false;
+    }
+  }
+  
+  function overCircle(x, y, d) {
+    const disX = x - mouseX;
+    const disY = y - mouseY;
+    if(sqrt(sq(disX) + sq(disY)) < d/2 ) 
+    {
+      return true;
+    } 
+    else 
+    {
+      return false;
+    }
+  }
+  
+  //circle2 functionality
+  function drawCircle2(x,y,diam)
+  {
+    update2(x, y, diam);
+  
+    if (circleOver2) 
+    {
+      fill('green');
+      points++;
+    }
+  
+    circle(x, y, diam);
+  }
+  
+  function update2(x, y, diam) {
+    if (overCircle2(x, y, diam)) 
+    { 
+      circleOver2 = true;
+    } 
+    else 
+    {
+      circleOver2 = false;
+    }
+  }
+  
+  function overCircle2(x, y, d) {
+    const disX = x - mouseX;
+    const disY = y - mouseY;
+    if(sqrt(sq(disX) + sq(disY)) < d/2 ) 
+    {
+      return true;
+    } 
+    else 
+    {
+      return false;
+    }
+  }
 //GUI FUNCTIONALITY, DO NOT TOUCH
   function goBack()
   {

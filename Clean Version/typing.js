@@ -47,9 +47,10 @@ function draw() {
   strokeWeight(2);
   text('Typing!', windowWidth*.06, windowHeight*.07);
   textAlign(CENTER);
-  text('Points:', 1200, 520);
-  text(points, 1200, 600);
-
+  text('Points:', windowWidth*.9, windowHeight*.8);
+  text(points, windowWidth*.888, windowHeight*.9);
+  textAlign(LEFT);
+  text('Instructions: Type the word(s) displayed on the screen.', windowWidth*.2, windowHeight*.07);
   fill('red');
   // you probably want to display text for the round somewhere
   // as well as points

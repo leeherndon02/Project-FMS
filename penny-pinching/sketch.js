@@ -17,8 +17,6 @@ function setup()
 function draw() 
 {
     background(220);
-    button.position(windowWidth*.05, windowHeight*.75);
-    button.size(100, 100);
     stroke('black');
     fill('yellow');
     rect(windowHeight*.014, windowHeight*.02, 300, 50);
