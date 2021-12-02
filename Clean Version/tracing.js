@@ -13,6 +13,16 @@ let switchLetter = false;
 let globalCount = 0;
 let pointsDeducted = true;
 let pointsDeducted2 = true;
+let sounds = [];
+let sounds2 = [];
+
+function preload() {
+	for(var i=0;i<5;++i) {
+		sounds.push(loadSound("assets/round"+(i+1)+".ogg"));
+	}
+	sounds2.push(loadSound("assets/error.ogg"));
+	sounds2.push(loadSound("assets/success.ogg"));
+}
 
 function setup() {
 	cnv = createCanvas(windowWidth, windowHeight);
@@ -99,10 +109,13 @@ function draw() {
 
 function mouseReleased(){
 	if (switchLetter) {
+		sounds2[1].play();
 		advance();
 	}
 }
-
+function playSound(){
+	if(switchLetter){}
+}
 function mouseDragged(){ //runs when 
 	if(c[1] == 50){ //when the green rgb value matches color of letter
 		pointsDeducted = true;
@@ -137,8 +150,14 @@ function displayLetter(letter){ //draws the letter in the background
 }
 
 function letterPoints(){
+	sounds2[0].play();
 	points = points - 2;
 	pointsDeducted = false;
+}
+
+function play_random_sound() {
+	var idx = (Math.random()*4)|0;
+	sounds[idx].play()
 }
 
 function countPixels(){
