@@ -8,6 +8,7 @@ let point = 0;
 let points = 0;
 let totalTimeMS=0;
 let sounds = [];
+let readerMode = false;
 
 let isEqual = false;
 
@@ -77,19 +78,30 @@ function advance () {
   var spl = targetWords.split(" ");
   // get more words
   targetWords = "";
+  var newWords = [];
   for(var i=0;i<=spl.length;i++) {
-    targetWords += random_word() + " ";
+    newWords.push(random_word());
   }
-  // trim the trailing " "
-  targetWords = targetWords.substring(0, targetWords.length-1);
+  targetWords = newWords.join(" ");
   round++;
-  speak("typed "+(spl.length)+" words for a total of "+points+". Now type "+targetWords);
+  if(readerMode) {
+    if(round % 3 === 0) {
+      speak("Round "+round+": typed "+(newWords.length)+" words, "+points+" points. Type "+newWords.join(", "));
+    }
+    else {
+      speak("Type "+targetWords);
+    }
+  }
   play_random_sound();
   isEqual = false;
 }
 
 function keyTyped(event) {
   if(key === "Enter") {
+    if(readerMode) {
+      speak(targetWords);
+    }
+    chars = "";
     return;
   }
   chars += key;
@@ -102,7 +114,6 @@ function keyTyped(event) {
       isEqual = false;
     }
   }
-  speak("target "+targetWords);
   if(was_typed(targetWords)) {
     advance();
   }
@@ -113,8 +124,19 @@ function keyTyped(event) {
 function keyPressed(key) {
   if(chars.length > 0) {
     if(keyCode === BACKSPACE) {
-      speak(chars[chars.length-1]);
+      if(readerMode)
+        speak(chars[chars.length-1]);
       chars = chars.substring(0, chars.length-1);
+    }
+  }
+  if(keyCode === ENTER && keyIsDown(CONTROL)) {
+    readerMode = !readerMode;
+    console.log(readerMode);
+    if(readerMode) {
+      speak("Reader mode enabled. Press control + enter to disable. Type "+targetWords);
+    }
+    else {
+      speak("Reader mode disabled");
     }
   }
 }
