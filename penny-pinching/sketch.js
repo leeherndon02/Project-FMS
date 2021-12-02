@@ -21,16 +21,16 @@ function draw()
     button.size(100, 100);
     stroke('black');
     fill('yellow');
-    rect(9, 15, 290, 50);
+    rect(windowHeight*.014, windowHeight*.02, 300, 50);
 
     fill('black');
     
     strokeWeight(2);
-    text('Penny Pinching!', 10, 50);
+    text('Penny Pinching!', windowHeight*.015, windowHeight*.07);
     //textAlign(CENTER);
-    text('Points:', 1200, 520);
-    text(points, 1200, 600);
-    
+    text('Points:', windowWidth*.85, windowHeight*.7);
+    text(points, windowWidth*.888, windowHeight*.8);
+    text('Instructions: Alternate touch between the 2 circles to gain points.', windowWidth*.10, windowHeight*.15);
 
     fill('brown');
     stroke('black');
@@ -64,6 +64,7 @@ function drawCircle(x,y,diam)
 	if (circleOver) 
   {
 		fill('green');
+    points++;
 	}
 
 	circle(x, y, diam);
@@ -100,7 +101,8 @@ function drawCircle2(x,y,diam)
 
 	if (circleOver2) 
   {
-		fill('pink');
+		fill('green');
+    points++;
 	}
 
 	circle(x, y, diam);
