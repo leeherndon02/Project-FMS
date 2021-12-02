@@ -58,7 +58,7 @@ function draw()
 
   function game1()
   {
-    window.location = "./letter.html"
+    window.location = "./tracing.html"
   }
 
   function game2()
